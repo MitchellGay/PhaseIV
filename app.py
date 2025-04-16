@@ -3,7 +3,6 @@ import mysql.connector
 
 app = Flask(__name__)
 
-# MySQL Connection
 conn = mysql.connector.connect(
     host='localhost',
     user='root',
@@ -15,14 +14,9 @@ conn = mysql.connector.connect(
 def index():
     return render_template('index.html')
 
-@app.route('/submit', methods=['POST'])
-def submit():
-    data = request.json.get('message')
-    cursor = conn.cursor()
-    cursor.execute("INSERT INTO messages (text) VALUES (%s)", (data,))
-    conn.commit()
-    cursor.close()
-    return jsonify({'status': 'success', 'message': data})
+@app.route('/task/<task_name>')
+def task(task_name):
+    return render_template('task.html', task=task_name)
 
 if __name__ == '__main__':
     app.run(debug=True)

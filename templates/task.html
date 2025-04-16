@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task: {{ task }}</title>
+</head>
+<body>
+    <h1>You're on the {{ task | capitalize }} Page</h1>
+
+    {% if task == 'add' %}
+        <p>This is where you would add data.</p>
+    {% elif task == 'view' %}
+        <p>This is where you'd view entries from the database.</p>
+    {% elif task == 'export' %}
+        <p>This is where you'd export data to CSV.</p>
+    {% else %}
+        <p>Unknown task.</p>
+    {% endif %}
+
+    <p><a href="/">← Back to Home</a></p>
+</body>
+</html>

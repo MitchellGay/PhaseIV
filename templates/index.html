@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Message Submitter</title>
+    <title>Choose a Task</title>
 </head>
 <body>
-    <h1>Submit a message</h1>
-    <input type="text" id="messageInput" />
-    <button onclick="sendMessage()">Send</button>
+    <h1>Welcome to the Flask App</h1>
 
-    <script src="/static/script.js"></script>
+    <label for="taskDropdown">Choose a task:</label>
+    <select id="taskDropdown" onchange="goToTask()">
+        <option value="">-- Select Task --</option>
+        <option value="add">Add Airplane</option>
+        <option value="view">Add Pilot</option>
+        <option value="export">Add Airport</option>
+    </select>
+
+    <script>
+    function goToTask() {
+        const selected = document.getElementById("taskDropdown").value;
+        if (selected) {
+            window.location.href = '/task/' + selected;
+        }
+    }
+    </script>
 </body>
 </html>
